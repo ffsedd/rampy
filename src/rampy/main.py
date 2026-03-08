@@ -59,10 +59,6 @@ def main():
     for r in results:
          r.get()  # print errors if any
 
-    # ~ for dpath in dirs:  # single processing
-        # ~ RamanPlotter(dpath, **args)
-            
-            
 
 def parse_args():
     import argparse
@@ -75,7 +71,6 @@ def parse_args():
     p.add_argument('-s','--smooth', default=11, type=int, help="smooth window")
     p.add_argument('-j','--jpegs', action='store_true', default=False)
     p.add_argument('-f', '--flag', action='store_true', default=False)
-    p.add_argument('-c', '--copyresults', action='store_true', default=False)
     p.add_argument('-d', '--debug', action="store_true", help="Enable the debug mode for logging debug statements." )
     p.add_argument("-v", "--verbose", action="count", default=0,
         help="verbose (CRITICAL, ERROR, WARN, INFO, DEBUG), eg. -vvvv")
@@ -85,31 +80,6 @@ def parse_args():
 
 
 
-     
-def copy_to_zakazky(dp):
-
-
-    fs = dp.glob("*.pdf")
-    for f in fs:
-        try:
-            zakno = int(f.stem[:4])
-        except:
-            continue
-        trg = ZDIC[zakno] / "pytex"
-        if trg.is_dir():
-            trg2 = trg / "raman"
-            trg2.mkdir(exist_ok=True)
-            shutil.copy2(f,trg2 / f.name.replace("%","_"))
-                        
-            print(f, trg2)
-            
-            src2 = f.parent / f.stem
-            if src2.is_dir():
-                shutil.copytree(src2, trg2 / src2.name, dirs_exist_ok=True) 
-                
-
-              
-        
 
 
 
