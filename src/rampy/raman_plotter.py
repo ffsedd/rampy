@@ -116,21 +116,21 @@ class RamanPlotter:
         self.saveplot(output_path)
 
         
-    def plot_single_spectra(self, *a, **kw):    
-        # plot dvojice - standard a vzorek
-        if jpegs:
-            for s in self.spectra:
-                fig = plt.figure(figsize=(10,5))
-                ax1 = plt.gca()
-                s.plot_with_peaks(color="red") 
-                ax2 = ax1.twinx() 
-                
-                for st in self.standards:
-                    st.plot_with_peaks(linestyle='dashed', linewidth=1, ax=ax2)  
-                    # ~ st.plot_peaks(rng=(100,3000), fontsize=8, decimals=0) 
-                    self.plot_config(ax1, ax2, xlim, ylim, ylim2)
-                self.saveplot(dp.parent / (s.path+".jpg"))    
-                plt.close()  
+    # def plot_single_spectra(self, *a, **kw):    
+    #     # plot dvojice - standard a vzorek
+
+    #     for s in self.spectra:
+    #         fig = plt.figure(figsize=(10,5))
+    #         ax1 = plt.gca()
+    #         s.plot_with_peaks(color="red") 
+    #         ax2 = ax1.twinx() 
+            
+    #         for st in self.standards:
+    #             st.plot_with_peaks(linestyle='dashed', linewidth=1, ax=ax2)  
+    #             # ~ st.plot_peaks(rng=(100,3000), fontsize=8, decimals=0) 
+    #             # self.plot_config(ax1, ax2, xlim, ylim, ylim2)
+    #         self.saveplot(dp.parent / (s.path+".jpg"))    
+    #         plt.close()  
 
     def saveplot(self, fpath, *a, **kw):
         fpath = Path(fpath).resolve()

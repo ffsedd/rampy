@@ -19,12 +19,12 @@ from .spectrum.square_root_scale import SquareRootScale
 mscale.register_scale(SquareRootScale)
 
 from .raman_plotter import RamanPlotter
-# ~ from qq.ntool.smooth import smooth_golay
+
 
     
-from zuy.common import zlib
-ZDIR = zlib.find_zakazky_dir()      # all zakazky dir
-ZDIC = zlib.zak_dict(ZDIR)  # dict {zakazka_no : Path}
+from .zlib import find_zakazky_dir, zak_dict
+ZDIR = find_zakazky_dir()      # all zakazky dir
+ZDIC = zak_dict(ZDIR)  # dict {zakazka_no : Path}
 
 ROOT = Path.home().joinpath("Dropbox/zumi_2/ANALYZY/RAMAN/RAMANPY").resolve()  
 
